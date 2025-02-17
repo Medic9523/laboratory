@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reagentlar Hisobi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Reagentlar Ro'yxati</h1>
+    <a href="{{ url_for('add_reagent') }}">+ Reagent qo'shish</a>
+    <a href="{{ url_for('export_report') }}">📥 CSV eksport</a>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nomi</th>
+                <th>Turi</th>
+                <th>Miqdor</th>
+                <th>Operatsiya</th>
+                <th>Sana</th>
+                <th>O‘chirish</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reagent in reagents %}
+            <tr>
+                <td>{{ reagent.id }}</td>
+                <td>{{ reagent.name }}</td>
+                <td>{{ reagent.type }}</td>
+                <td>{{ reagent.quantity }}</td>
+                <td>{{ reagent.operation_type }}</td>
+                <td>{{ reagent.operation_date.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td><a href="{{ url_for('delete_reagent', id=reagent.id) }}">❌</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

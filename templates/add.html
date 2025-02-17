@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reagent qo'shish</title>
+</head>
+<body>
+    <h1>Reagent qo‘shish</h1>
+    <form action="{{ url_for('add_reagent') }}" method="post">
+        <label for="name">Reagent nomi:</label>
+        <input type="text" name="name" required>
+        
+        <label for="type">Turi:</label>
+        <select name="type">
+            <option value="DYE">DYE</option>
+            <option value="LYSE">LYSE</option>
+            <option value="DILUENT">DILUENT</option>
+        </select>
+
+        <label for="quantity">Miqdor:</label>
+        <input type="number" step="0.01" name="quantity" required>
+
+        <label for="operation_type">Operatsiya:</label>
+        <select name="operation_type">
+            <option value="Kirim">Kirim</option>
+            <option value="Chiqim">Chiqim</option>
+        </select>
+
+        <button type="submit">Qo‘shish</button>
+    </form>
+    <a href="{{ url_for('index') }}">⬅️ Orqaga</a>
+</body>
+</html>
